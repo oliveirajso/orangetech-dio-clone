@@ -18,5 +18,6 @@ export const InputText = styled.input`
   background-color: transparent;
   color: #ffffff;
   border: 0;
+  width: 100%;
   height: 30px;
 `;
