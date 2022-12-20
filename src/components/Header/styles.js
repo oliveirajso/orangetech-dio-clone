@@ -58,12 +58,7 @@ export const MenuRight = styled.a`
   margin-right: 12px;
   text-decoration: none;
 `;
-export const UserPicture = styled.img`
-  width: 32px;
-  height: 32px;
-  border-radius: 22px;
-  border: 2px solid #ffffff;
-`;
+
 
 export const Input = styled.input`
   background: transparent;
