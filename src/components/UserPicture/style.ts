@@ -1,6 +1,7 @@
 import styled, { css } from "styled-components";
+import { IUserPictureStyled } from "./types";
 
-export const UserPicturePhoto = styled.img`
+export const UserPicturePhoto = styled.img<IUserPictureStyled>`
   width: 32px;
   height: 32px;
   border-radius: 22px;
