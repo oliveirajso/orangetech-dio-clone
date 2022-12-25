@@ -8,6 +8,7 @@ import { useForm } from "react-hook-form"
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
 import { api } from '../../services/api';
+import { IFormData } from './types';
 const Login = () => {
 
   const schema = yup.object({
@@ -16,11 +17,11 @@ const Login = () => {
   }).required();
 
   const navigate = useNavigate();
-  const { control, handleSubmit, formState: { errors, isValid } } = useForm({
+  const { control, handleSubmit, formState: { errors, isValid } } = useForm<IFormData>({
     resolver: yupResolver(schema),
     mode: "onChange",
   });
-  const onSubmit = async formData => {
+  const onSubmit = async (formData:IFormData) => {
     try {
       const { data } = await api.get(`users?email=${formData.email}&senha=${formData.password}`);
       if (data.length === 1) {
