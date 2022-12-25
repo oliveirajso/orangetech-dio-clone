@@ -1,7 +1,7 @@
 import Card from "../../components/Card";
 import { Header } from "../../components/Header";
 import UserInfo from "../../components/UserInfo";
-import { Container, Column, Title, TitleHighlight } from "./style";
+import { Column, Container, Title, TitleHighlight } from "./style";
 const Feed = () => {
   return (<>
     <Header autenticado={true} />

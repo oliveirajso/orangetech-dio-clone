@@ -1,4 +1,4 @@
-import React from "react";
+import { useNavigate } from "react-router-dom";
 import { Button } from "../Button";
 import UserPicture from "../UserPicture";
 import logo from "./../../assets/logo-dio.png";
@@ -11,7 +11,6 @@ import {
   Row,
   Wrapper,
 } from "./styles";
-import { useNavigate } from "react-router-dom";
 import { IHeader } from "./types";
 
 const Header = ({ autenticado }: IHeader) => {
