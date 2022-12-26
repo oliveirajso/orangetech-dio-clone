@@ -4,7 +4,7 @@ export const Container = styled.main`
   width: 100%;
   max-width: 80%;
   margin: 0 auto;
-  margin-top: 120px;
+  margin-top: 50px;
 
   display: flex;
   flex-direction: row;
@@ -43,9 +43,9 @@ export const TitleCadastrar = styled.p`
   font-family: "Open Sans";
   font-style: normal;
   font-weight: 700;
-  font-size: 32px;
+  font-size: 28px;
   margin-bottom: 20px;
-  line-height: 44px;
+  line-height: 30px;
 `;
 
 export const SubTitleCadastrar = styled.p`
@@ -66,19 +66,17 @@ export const JatemLogin = styled.p`
   font-size: 12px;
   line-height: 35px;
   color: #ffffff;
+
+  span {
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 35px;
+    color: #23dd7a;
+  }
 `;
 
-export const JatemLoginText = styled.p`
-  width: 185px;
-  height: 19px;
-
-  font-family: "Open Sans";
-  font-style: normal;
-  font-weight: 700;
-  font-size: 12px;
-  line-height: 35px;
-  color: #23dd7a;
-`;
 
 export const CriarText = styled.p`
   font-family: "Open Sans";

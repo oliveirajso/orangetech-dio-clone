@@ -11,7 +11,6 @@ import {
   Column,
   Container,
   JatemLogin,
-  JatemLoginText,
   PoliticasText,
   Row,
   SubTitleCadastrar,
@@ -23,10 +22,14 @@ import { IFormData } from "./types";
 const Cadastrar = () => {
   const schema = yup
     .object({
+      nome: yup
+        .string()
+        .min(3, "No minimo 3 caracteres")
+        .required("Nome é obrigatório"),
       email: yup
         .string()
         .email("email não é valido")
-        .required("Email é obrigatório"),
+        .required("E-mail é obrigatório"),
       password: yup
         .string()
         .min(3, "No minimo 3 caracteres")
@@ -45,17 +48,27 @@ const Cadastrar = () => {
   });
   const onSubmit = async (formData: IFormData) => {
     try {
-      const { data } = await api.get(
-        `users?email=${formData.email}&senha=${formData.password}`
-      );
-      if (data.length === 1) {
+      const { data } = await api.post(`users`, {
+        nome: formData.nome,
+        email: formData.email,
+        password: formData.password,
+      });
+
+      if (data.id !== 0) {
+        console.log(
+          "Cadastro realizado com sucesso!<br> Você será redirecionado."
+        );
         navigate("/feed");
       } else {
         alert("email ou senha inválido");
       }
     } catch (error) {
+      console.log(error);
       alert("Houve um erro, tente novamente.");
     }
+  };
+  const handleLoginPage = () => {
+    navigate("/login");
   };
 
   return (
@@ -77,7 +90,7 @@ const Cadastrar = () => {
                 control={control}
                 name="nome"
                 placeholder="Nome Completo"
-                errorMessage={errors?.email?.message}
+                errorMessage={errors?.nome?.message}
                 leftIcon={<MdPerson />}
               />
               <Input
@@ -108,8 +121,11 @@ const Cadastrar = () => {
               </PoliticasText>
             </Row>
             <Row>
-              <JatemLogin> Já tenho conta</JatemLogin>
-              <JatemLoginText> Fazer login</JatemLoginText>
+              <JatemLogin>
+                {" "}
+                Já tenho conta:{" "}
+                <span onClick={handleLoginPage}>Fazer login</span>
+              </JatemLogin>
             </Row>
           </Wrapper>
         </Column>

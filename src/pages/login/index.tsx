@@ -58,7 +58,6 @@ const Login = () => {
   };
 
   const handleNewAccount = () => {
-    alert("Cadastro");
     navigate("/cadastrar");
   };
   return (
