@@ -1,6 +1,6 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
-import { MdEmail, MdLock } from "react-icons/md";
+import { MdEmail, MdLock, MdPerson } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import { Button } from "../../components/Button";
@@ -10,16 +10,17 @@ import { api } from "../../services/api";
 import {
   Column,
   Container,
-  CriarText,
-  EsqueciText,
+  JatemLogin,
+  JatemLoginText,
+  PoliticasText,
   Row,
-  SubTitleLogin,
+  SubTitleCadastrar,
   Title,
-  TitleLogin,
+  TitleCadastrar,
   Wrapper,
 } from "./style";
 import { IFormData } from "./types";
-const Login = () => {
+const Cadastrar = () => {
   const schema = yup
     .object({
       email: yup
@@ -57,10 +58,6 @@ const Login = () => {
     }
   };
 
-  const handleNewAccount = () => {
-    alert("Cadastro");
-    navigate("/cadastrar");
-  };
   return (
     <>
       <Header />
@@ -73,9 +70,16 @@ const Login = () => {
         </Column>
         <Column>
           <Wrapper>
-            <TitleLogin>Faça seu cadastro</TitleLogin>
-            <SubTitleLogin>Faça seu login</SubTitleLogin>
+            <TitleCadastrar>Comece agora grátis</TitleCadastrar>
+            <SubTitleCadastrar>Crie sua conta.</SubTitleCadastrar>
             <form onSubmit={handleSubmit(onSubmit)}>
+              <Input
+                control={control}
+                name="nome"
+                placeholder="Nome Completo"
+                errorMessage={errors?.email?.message}
+                leftIcon={<MdPerson />}
+              />
               <Input
                 control={control}
                 name="email"
@@ -91,11 +95,21 @@ const Login = () => {
                 type="password"
                 leftIcon={<MdLock />}
               />
-              <Button title="Entrar" variant="secondary" type="submit" />
+              <Button
+                title="Criar minha conta"
+                variant="secondary"
+                type="submit"
+              />
             </form>
             <Row>
-              <EsqueciText> Esqueci minha senha</EsqueciText>
-              <CriarText onClick={handleNewAccount}> Criar conta</CriarText>
+              <PoliticasText>
+                Ao clicar em "criar minha conta grátis", declaro que aceito as
+                Políticas de Privacidade e os Termos de Uso da DIO.
+              </PoliticasText>
+            </Row>
+            <Row>
+              <JatemLogin> Já tenho conta</JatemLogin>
+              <JatemLoginText> Fazer login</JatemLoginText>
             </Row>
           </Wrapper>
         </Column>
@@ -104,4 +118,4 @@ const Login = () => {
   );
 };
 
-export { Login };
+export { Cadastrar };

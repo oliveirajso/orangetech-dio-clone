@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Link, Route, Routes } from "react-router-dom";
+import { Cadastrar } from "./pages/cadastrar";
 import { Feed } from "./pages/feed";
 import { Home } from "./pages/home";
 import { Login } from "./pages/login";
@@ -10,6 +11,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/feed" element={<Feed />} />
+        <Route path="/cadastrar" element={<Cadastrar />} />
         <Route path="*" element={<NoMatch />} />
       </Routes>
     </Router>
